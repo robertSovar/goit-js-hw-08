@@ -8,15 +8,15 @@ const galleryItemsElement = document.querySelector(".gallery");
 const photoMarkup = createGalleryItems(galleryItems);
 
 function createGalleryItems(element) {
-    return element.map((preview, original, description) => {
+    return element.map(({preview, original, description}) => {
         return `
             <a href="${original}" class="gallery__item">
                 <img src="${preview}" alt="${description}" class="gallery__image">
             </a>`
-    }).join('');
+    }).join("");
 }
 
-galleryItemsElement.insertAdjacentElement("beforeend", photoMarkup);
+galleryItemsElement.innerHTML = photoMarkup;
 
 const galleryHandler = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
